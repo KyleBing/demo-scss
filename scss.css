@@ -1,0 +1,356 @@
+@charset "UTF-8";
+body {
+  -webkit-background-size: 100px;
+  font-family: "SF UI Display";
+}
+
+.container {
+  margin-bottom: 20px;
+  padding: 5px 20px;
+}
+.container.flower {
+  background-image: url("./wood.jpg");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+}
+.container.flower .header {
+  color: white;
+}
+.container .header {
+  font-weight: bold;
+  font-size: 20px;
+}
+.container .content {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.block {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  color: white;
+  font-size: 13px;
+  line-height: 100px;
+}
+
+.green-original {
+  background-color: #4B9E65;
+}
+
+.green-lighten {
+  background-color: #88c79c;
+}
+
+.green-darken {
+  background-color: #2a5939;
+}
+
+.green-saturate {
+  background-color: #34b55c;
+}
+
+.green-desaturate {
+  background-color: #62876e;
+}
+
+.green-transparent {
+  background-color: rgba(75, 158, 101, 0.8);
+}
+
+/* buttons */
+/****************************
+把一些常用的需要多平台适配的（-webkit-）做成 mixin 方便调用，写的时候代码也简洁
+像这种还有 box-shadow transform transition animation 等等
+一般在项目中都单独定义成一个文件 _utility.scss，直接引用使用，也方便。
+这里只是提一下，可能会对你有所启发
+*/
+/****************************
+这里定义最常用的通用方法，比如 .link .btn .block .hidden
+一般保存为 _normalize.scss 文件
+*/
+.unselectable, .btn {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn {
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.btn:active {
+  transform: translateY(2px);
+}
+
+.btn-normal {
+  color: #333;
+  border: 1px solid #cccccc;
+  background-color: white;
+}
+.btn-normal:hover {
+  background-color: white;
+}
+.btn-normal:active {
+  border-color: transparent;
+  background-color: #d9d9d9;
+}
+
+.btn-primary {
+  color: white;
+  border: 1px solid #006ee6;
+  background-color: #007AFF;
+}
+.btn-primary:hover {
+  background-color: #1a87ff;
+}
+.btn-primary:active {
+  border-color: transparent;
+  background-color: #0055b3;
+}
+
+.btn-success {
+  color: white;
+  border: 1px solid #37d552;
+  background-color: #4CD964;
+}
+.btn-success:hover {
+  background-color: #61dd76;
+}
+.btn-success:active {
+  border-color: transparent;
+  background-color: #26b33e;
+}
+
+.btn-danger {
+  color: white;
+  border: 1px solid #ff2317;
+  background-color: #FF3B30;
+}
+.btn-danger:hover {
+  background-color: #ff534a;
+}
+.btn-danger:active {
+  border-color: transparent;
+  background-color: #e30c00;
+}
+
+.btn-warning {
+  color: white;
+  border: 1px solid #e68600;
+  background-color: #FF9500;
+}
+.btn-warning:hover {
+  background-color: #ffa01a;
+}
+.btn-warning:active {
+  border-color: transparent;
+  background-color: #b36800;
+}
+
+.btn-second {
+  color: white;
+  border: 1px solid #818187;
+  background-color: #8E8E93;
+}
+.btn-second:hover {
+  background-color: #9b9b9f;
+}
+.btn-second:active {
+  border-color: transparent;
+  background-color: #68686d;
+}
+
+.text-level-0 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #ff3030 !important;
+}
+
+.text-level-1 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #ff3098 !important;
+}
+
+.text-level-2 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #ff30ff !important;
+}
+
+.text-level-3 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #9830ff !important;
+}
+
+.text-level-4 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #3030ff !important;
+}
+
+.text-level-5 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #3098ff !important;
+}
+
+.text-level-6 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #30ffff !important;
+}
+
+.text-level-7 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #30ff98 !important;
+}
+
+.text-level-8 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #30ff30 !important;
+}
+
+.text-level-9 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #98ff30 !important;
+}
+
+.text-level-10 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #ffff30 !important;
+}
+
+.text-level-11 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #ff9830 !important;
+}
+
+.text-level-12 {
+  margin-right: 15px;
+  font-weight: bold;
+  color: #ff3030 !important;
+}
+
+.box-level-0 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #ff3030 !important;
+}
+
+.box-level-1 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #ff3098 !important;
+}
+
+.box-level-2 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #ff30ff !important;
+}
+
+.box-level-3 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #9830ff !important;
+}
+
+.box-level-4 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #3030ff !important;
+}
+
+.box-level-5 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #3098ff !important;
+}
+
+.box-level-6 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #30ffff !important;
+}
+
+.box-level-7 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #30ff98 !important;
+}
+
+.box-level-8 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #30ff30 !important;
+}
+
+.box-level-9 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #98ff30 !important;
+}
+
+.box-level-10 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #ffff30 !important;
+}
+
+.box-level-11 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #ff9830 !important;
+}
+
+.box-level-12 {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  font-weight: bold;
+  background-color: #ff3030 !important;
+}
+
+/*# sourceMappingURL=scss.css.map */

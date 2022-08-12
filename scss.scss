@@ -1,0 +1,151 @@
+@use 'sass:color';
+$block-width: 100px;
+
+body{
+  -webkit-background-size: 100px;
+  font-family: "SF UI Display";
+
+}
+.container{
+  margin-bottom: 20px;
+  padding: 5px 20px;
+  &.flower{
+    background-image: url("./wood.jpg");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+    .header{
+      color: white;
+    }
+  }
+  .header{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .content{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+
+  }
+}
+.block{
+  flex-shrink: 0;
+  width: $block-width;
+  height: $block-width;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  color: white;
+  font-size: 13px;
+  line-height: $block-width;
+}
+
+$green: #4B9E65;
+
+.green-original    { background-color: $green;                      }
+.green-lighten     { background-color: lighten($green,20%);         }
+.green-darken      { background-color: darken($green,20%);          }
+.green-saturate    { background-color: saturate($green,20%);        }
+.green-desaturate  { background-color: desaturate($green,20%);      }
+.green-transparent { background-color: transparentize($green, 0.2); }
+
+
+
+/* buttons */
+$green          : #4CD964;
+$syan           : #5AC8FA;
+$blue           : #007AFF;
+$purple         : #5856D6;
+$magenta        : #FF2D70;
+$red            : #FF3B30;
+$orange         : #FF9500;
+$yellow         : #FFCC00;
+$gray           : #8E8E93;
+
+$btn-types: (
+        "normal": white,
+        "primary": $blue,
+        "success": $green,
+        "danger": $red,
+        "warning": $orange,
+        "second": $gray,
+);
+
+/****************************
+把一些常用的需要多平台适配的（-webkit-）做成 mixin 方便调用，写的时候代码也简洁
+像这种还有 box-shadow transform transition animation 等等
+一般在项目中都单独定义成一个文件 _utility.scss，直接引用使用，也方便。
+这里只是提一下，可能会对你有所启发
+*/
+
+@mixin border-radius($value){
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+}
+
+/****************************
+这里定义最常用的通用方法，比如 .link .btn .block .hidden
+一般保存为 _normalize.scss 文件
+*/
+
+.unselectable{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// .btn 里只放 button 最基础的行为和动作
+// 下面循环中的 .btn-xxxx 只处理按钮的颜色变化，这样明了
+.btn {
+  padding: 6px 10px;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 10px;
+  @extend .unselectable; // 引用其它类的内容作为自己的内容，也就是扩展
+  @include border-radius(5px); // 调用 mixin
+  &:active{
+    transform: translateY(2px);
+  }
+}
+
+@each $name, $color in $btn-types {
+  .btn-#{$name} {
+    @if $name == normal {   // 判断 button 名 是否为 'normal'
+      color: #333;          // 如果是，内部文字颜色为 #333
+      border: 1px solid darken($color, 20%);
+    } @else {
+      color: white;
+      border: 1px solid darken($color, 5%);
+    }
+    background-color: $color;
+    &:hover{
+      background-color: lighten($color, 5%);
+    }
+    &:active{
+      border-color: transparent;
+      background-color: darken($color, 15%); // 点击的时候按钮背景颜色深 15%
+    }
+  }
+}
+
+
+// 颜色操作
+@for $item from 0 through 12 {
+  .text-level-#{$item}{
+    margin-right: 15px;
+    font-weight: bold;
+    color: color.change($red, $hue: -30deg * $item) !important;
+  }
+}
+
+@for $item from 0 through 12 {
+  .box-level-#{$item}{
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    font-weight: bold;
+    background-color: color.change($red, $hue: -30deg * $item) !important;
+  }
+}
