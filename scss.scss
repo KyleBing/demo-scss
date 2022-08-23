@@ -149,3 +149,82 @@ $btn-types: (
     background-color: color.change($red, $hue: -30deg * $item) !important;
   }
 }
+
+
+
+$animation-duration: 0.3s;
+$icon-width: 60px;
+$frame-count: 16;
+
+
+// ANIMATION ICONS
+.animation-icon {
+  width: $icon-width;
+  height: $icon-width;
+  background-position: top;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  @extend .animation-icon-leave;
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid #eee;
+    @extend .animation-icon-enter
+  }
+}
+
+
+.lock{background-image: url(animation-icons/tencent.png);}
+.money{background-image: url(animation-icons/money.png);}
+.setup{background-image: url(animation-icons/setup.png);}
+.game{background-image: url(animation-icons/game.png);}
+.cloud{background-image: url(animation-icons/cloud.png);}
+.weixin{background-image: url(animation-icons/weixin.png);}
+
+
+.animation-icon-enter {
+  -webkit-animation:icon-animation-enter $animation-duration steps($frame-count) forwards;
+  animation: icon-animation-enter $animation-duration steps($frame-count) forwards
+}
+
+
+@-webkit-keyframes icon-animation-enter {
+  0% {background-position: 0 0}
+  to {background-position: 0 $icon-width * $frame-count * -1}
+}
+
+@keyframes icon-animation-enter {
+  0% {background-position: 0 0}
+  to {background-position: 0 $icon-width * $frame-count * -1}
+}
+
+
+.animation-icon-leave {
+  -webkit-animation: icon-animation-leave $animation-duration steps($frame-count) forwards;
+  animation: icon-animation-leave $animation-duration steps($frame-count) forwards
+}
+
+@-webkit-keyframes icon-animation-leave {
+  0% {background-position: 0 $icon-width * $frame-count * -1}
+  to {background-position: 0 0}
+}
+
+@keyframes icon-animation-leave {
+  0% {background-position: 0 $icon-width * $frame-count * -1}
+  to {background-position: 0 0}
+}
+
+
+.ali-ai{background-image: url(animation-icons/ali-ai.png);}
+.ali-bigdata{background-image: url(animation-icons/ali-bigdata.png);}
+.ali-box{background-image: url(animation-icons/ali-box.png);}
+.ali-database{background-image: url(animation-icons/ali-database.png);}
+.ali-file{background-image: url(animation-icons/ali-file.png);}
+.ali-flex{background-image: url(animation-icons/ali-flex.png);}
+.ali-middle{background-image: url(animation-icons/ali-middle.png);}
+.ali-mix{background-image: url(animation-icons/ali-mix.png);}
+.ali-network{background-image: url(animation-icons/ali-network.png);}
+.ali-new{background-image: url(animation-icons/ali-new.png);}
+.ali-safety{background-image: url(animation-icons/ali-safety.png);}
+.ali-serve{background-image: url(animation-icons/ali-serve.png);}
+.ali-thing-net{background-image: url(animation-icons/ali-thing-net.png);}
+.ali-video{background-image: url(animation-icons/ali-video.png);}
