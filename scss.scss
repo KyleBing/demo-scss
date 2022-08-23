@@ -152,27 +152,29 @@ $btn-types: (
 
 
 
-$animation-duration: 0.3s;
-$icon-width: 60px;
-$frame-count: 16;
+// 动画图标 ANIMATION ICONS
+
+$animation-duration: 0.3s; // 动画的间隔
+$icon-width: 60px;         // 图标的大小
+$frame-count: 16;          // 动画的帧率
 
 
-// ANIMATION ICONS
+
 .animation-icon {
   width: $icon-width;
   height: $icon-width;
   background-position: top;
   background-size: 100% auto;
   background-repeat: no-repeat;
-  @extend .animation-icon-leave;
-  border: 1px solid transparent;
+  @extend .animation-icon-leave; // 默认图标动画
+  border: 1px solid transparent; // 这个只是为了标识鼠标悬停的位置，实际使用中删除即可
   &:hover {
-    border: 1px solid #eee;
-    @extend .animation-icon-enter
+    border: 1px solid #eee; // 这个只是为了标识鼠标悬停的位置，实际使用中删除即可
+    @extend .animation-icon-enter // hover 时的图标动画
   }
 }
 
-
+// 背景图
 .lock{background-image: url(animation-icons/tencent.png);}
 .money{background-image: url(animation-icons/money.png);}
 .setup{background-image: url(animation-icons/setup.png);}
@@ -181,11 +183,11 @@ $frame-count: 16;
 .weixin{background-image: url(animation-icons/weixin.png);}
 
 
+// 进入动画
 .animation-icon-enter {
   -webkit-animation:icon-animation-enter $animation-duration steps($frame-count) forwards;
   animation: icon-animation-enter $animation-duration steps($frame-count) forwards
 }
-
 
 @-webkit-keyframes icon-animation-enter {
   0% {background-position: 0 0}
@@ -197,7 +199,7 @@ $frame-count: 16;
   to {background-position: 0 $icon-width * $frame-count * -1}
 }
 
-
+// 离开动画
 .animation-icon-leave {
   -webkit-animation: icon-animation-leave $animation-duration steps($frame-count) forwards;
   animation: icon-animation-leave $animation-duration steps($frame-count) forwards
