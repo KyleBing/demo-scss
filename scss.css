@@ -1,12 +1,22 @@
 @charset "UTF-8";
 body {
+  background-color: #ececec;
   -webkit-background-size: 100px;
   font-family: "SF UI Display";
+  padding: 30px;
+}
+body a {
+  text-decoration: none;
+}
+body a:hover {
+  color: magenta;
 }
 
 .container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
   margin-bottom: 20px;
-  padding: 5px 20px;
 }
 .container.flower {
   background-image: url("./wood.jpg");
